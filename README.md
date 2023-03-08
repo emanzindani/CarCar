@@ -3,8 +3,6 @@
 Team:
 
 * Alana Torrez - Service microservice
-* Person 2 - Which microservice?
-* Person 1 - Which microservice?
 * Eman Zindani - Sales microservice/inventory: automobile list, automobile form and vehicle model form
 
 ## Design
