@@ -3,7 +3,7 @@
 Team:
 
 * Person 1 - Which microservice?
-* Eman Zindani - Sales microservice/inventory
+* Eman Zindani - Sales microservice/inventory: automobile list, automobile form and vehicle model form
 
 ## Design
 

@@ -1,9 +1,9 @@
-from common.json import ModelEncoder
 from django.views.decorators.http import require_http_methods
 from django.http import JsonResponse
 from .encoders import SalesPersonEncoder, CustomerEncoder, SalesRecordEncoder
 from .models import SalesPerson, Customer, SalesRecord, AutomobileVO
 import json
+
 
 @require_http_methods(["GET", "POST"])
 def api_list_salespersons(request):
@@ -22,6 +22,7 @@ def api_list_salespersons(request):
             safe=False,
         )
 
+
 @require_http_methods(["GET"])
 def api_show_salesperson(request, pk):
     if request.method == "GET":
@@ -31,6 +32,7 @@ def api_show_salesperson(request, pk):
             encoder=SalesRecordEncoder,
             safe=False
         )
+
 
 @require_http_methods(["GET", "POST"])
 def api_list_customers(request):
@@ -49,6 +51,7 @@ def api_list_customers(request):
             safe=False,
         )
 
+
 @require_http_methods(["GET"])
 def api_show_customer(request, pk):
     if request.method == "GET":
@@ -59,6 +62,7 @@ def api_show_customer(request, pk):
             safe=False
         )
 
+
 @require_http_methods(["GET", "POST"])
 def api_list_sales(request):
     if request.method == "GET":
@@ -67,7 +71,7 @@ def api_list_sales(request):
             {"sales": sales},
             encoder=SalesRecordEncoder
         )
-    else: #POST
+    else:
         content = json.loads(request.body)
         try:
             customer_id = content["customer"]

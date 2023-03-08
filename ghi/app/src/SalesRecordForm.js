@@ -19,7 +19,7 @@ class SalesRecordForm extends React.Component {
         delete data.sales_persons
         delete data.customers
         delete data.automobiles
-        console.log(data)
+
         const salesRecordUrl = 'http://localhost:8090/api/sale/'
         const fetchConfig = {
             method: "post",
@@ -31,7 +31,7 @@ class SalesRecordForm extends React.Component {
         const response = await fetch(salesRecordUrl, fetchConfig);
         if (response.ok) {
             const newSalesRecord = await response.json();
-            console.log(newSalesRecord)
+
 
             const clear = {
                 name: '',

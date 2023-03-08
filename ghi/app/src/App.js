@@ -14,7 +14,6 @@ import VehicleModelForm from './VehicleModelForm';
 import VehicleModelList from './VehicleModelList';
 
 
-
 function App(props) {
   return (
     <BrowserRouter>
