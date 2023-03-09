@@ -1,77 +1,73 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 
 
-class SalesPersonRecord extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            sales: [],
-            sales_persons: []
-        }
-        this.handleChange = this.handleChange.bind(this)
-    }
+function SalesPersonRecord () {
+    const [filterValue, setFilterValue] = useState('')
+    const [sales, setSales] = useState([])
 
-    async componentDidMount() {
-        const salesUrl = "http://localhost:8090/api/sale/"
-        const salesResponse = await fetch(salesUrl)
-        const salesPersonUrl = "http://localhost:8090/api/salesperson/"
-        const salesPersonResponse = await fetch(salesPersonUrl)
-        if (salesResponse.ok && salesPersonResponse.ok) {
-            const salesData = await salesResponse.json();
-            const salesPersonData = await salesPersonResponse.json()
-            this.setState({sales: salesData.sales})
-            this.setState({sales_persons: salesPersonData.sales_persons})
+
+    const getData = async () => {
+        const url = "http://localhost:8090/api/sale/"
+        const response = await fetch(url)
+
+
+        if (response.ok) {
+            const data = await response.json()
+            setSales(data.sales)
+
         }
     }
+    useEffect(() =>{
+        getData()
+    }, [])
 
-    handleChange(event) {
-        const object = {}
-        object[event.target.name] = event.target.value
-        this.setState(object)
+    const handleChangeForm = (e) => {
+        setFilterValue(e.target.value)
+    }
+    const filteredSalespeople = () => {
+        if (filterValue === '') {
+            return sales
+        } else {
+            return sales.filter((sale) =>
+                sale.sales_person.name.includes(filterValue)
+            )
+        }
     }
 
-    render() {
-        return (
-            <div>
-                <select onChange={this.handleChange} value={this.state.sales_person} required name="sales_person" id="sales_person" className="form-select">
-                <option value="">Select a Salesperson</option>
-                {this.state.sales_persons.map(salesPerson => {
-                    return (
-                        <option key={salesPerson.id} value={salesPerson.id}>
-                            {salesPerson.name}
-                        </option>
-                    )
-                })}
-                </select>
-
-                <table className="table">
-                    <thead>
-                        <tr>
-                            <th>Sales Person</th>
-                            <th>Employee ID</th>
-                            <th>Customer</th>
-                            <th>Vehicle VIN</th>
-                            <th>Price</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.state.sales.filter(
-                            sale=> sale.sales_person.id.toString() === this.state.sales_person).map(sale => {
-                            return (
-                                <tr key={sale.id}>
-                                    <td>{sale.sales_person.name}</td>
-                                    <td>{sale.sales_person.number}</td>
-                                    <td>{sale.customer.name}</td>
-                                    <td>{sale.automobile.vin}</td>
-                                    <td>{sale.price}</td>
-                                </tr>
-                            )
-                        })}
-                    </tbody>
+    return (
+        <>
+            <div className="row">
+            <h1>Sales person records</h1>
+            <input onChange={handleChangeForm} placeholder="Filter For Salesperson" />
+                <table className="table table-striped">
+                <thead>
+                    <tr>
+                    <th>Salesperson</th>
+                    <th>Employee ID</th>
+                    <th>Customer</th>
+                    <th>Vin</th>
+                    <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {filteredSalespeople().map((sale, id) => {
+                        return (
+                            <tr key={sale.id}>
+                            <td>{sale.sales_person.name}</td>
+                            <td>{ sale.sales_person.number }</td>
+                            <td>{sale.customer.name}</td>
+                            <td>{sale.automobile.vin}</td>
+                            <td>{sale.price}</td>
+                            </tr>
+                        );
+                    })}
+                </tbody>
                 </table>
             </div>
-        )
-    }
+        </>
+
+    );
+
 }
 
-export default SalesPersonRecord
+export default SalesPersonRecord;

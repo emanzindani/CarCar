@@ -15,7 +15,7 @@ class SalesRecordForm extends React.Component {
 
     async handleSubmit(event) {
         event.preventDefault();
-        const data = { ...this.state };
+        const data = { ...this.state }
         delete data.sales_persons
         delete data.customers
         delete data.automobiles
@@ -76,7 +76,7 @@ class SalesRecordForm extends React.Component {
                 <div className="row">
                     <div className="offset-3 col-6">
                         <div className="shadow p-4 mt-4">
-                            <h1>Record a Sale</h1>
+                            <h1>Record a new Sale</h1>
                             <form onSubmit={this.handleSubmit} id="create-customer-form">
                                 <div className="form-floating mb-3">
                                     <select onChange={this.handleChange} value={this.state.automobile} required name="automobile" id="automobile" className="form-select">
