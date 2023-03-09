@@ -46,7 +46,6 @@ class SalesPersonRecord extends React.Component {
                     <thead>
                         <tr>
                             <th>Sales Person</th>
-                            <th>Employee ID</th>
                             <th>Customer</th>
                             <th>Vehicle VIN</th>
                             <th>Price</th>
@@ -58,7 +57,6 @@ class SalesPersonRecord extends React.Component {
                             return (
                                 <tr key={sale.id}>
                                     <td>{sale.sales_person.name}</td>
-                                    <td>{sale.sales_person.number}</td>
                                     <td>{sale.customer.name}</td>
                                     <td>{sale.automobile.vin}</td>
                                     <td>{sale.price}</td>
