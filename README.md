@@ -18,15 +18,14 @@ The Service microservice will have three models within its bounded context:
  Frontend interaction:
  Inventory users will add new vins to automobiles through the "Create an Automobile" form.
 
- 2. Technician-- the first_name attribute is associated with Appointment objects in the Service microservice. When a new appointment is created, the
+ 2. Technician-- the 'first_name' attribute is associated with Appointment objects in the Service microservice. When a new appointment is created, the
  user is able to attach the first name of the technician to the appointment.
  Frontend interaction:
  Service users add new technicians through the "New technician" form.
 
  3. Appointment-- has the following attributes on its model: appointment_date, appointment_time, customer_name, technician, service_reason, and automobile.
- The autommobile attribute is a foreign key to the AutomobileVO, which contains the attributes href and vin. Vin mirrors the corresponding attribute
- on the Inventory service's Automobile model. In addition to the use of automobile vin through the creation of appointment form objects, the vin
- is also used as a search key on a service history view.
+ The autommobile attribute is a foreign key to the AutomobileVO, which contains the attributes 'href' and 'vin'. Vin mirrors the corresponding attribute
+ on the Inventory service's Automobile model. Vin is also used as a search key on a service history view.
  Frontend interaction:
  Service users can add appointments through the "New appointment" form, and can see a list of appointments through "List of Appointments". They can also see service appointments for a particular vin through "Service History".
 
