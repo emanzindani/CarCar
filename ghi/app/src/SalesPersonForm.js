@@ -20,7 +20,7 @@ function SalesPersonForm(props) {
         data.number = number;
 
 
-        console.log(data);
+    
         const salesPersonUrl = 'http://localhost:8090/api/salesperson/';
 
         const fetchConfig = {

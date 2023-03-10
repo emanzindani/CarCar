@@ -15,21 +15,12 @@ class Technician(models.Model):
 
 class Appointment(models.Model):
       appointment_date = models.DateTimeField()
-      appointment_time = models.DateTimeField()
+      appointment_time = models.CharField(max_length=10)
       customer_name = models.CharField(max_length=60)
       technician = models.CharField(max_length=60, null=True)
       service_reason = models.TextField()
       automobile = models.ForeignKey(
-        AutomobileVO,
-        related_name="appointments",
-        on_delete=models.CASCADE
-    )
-
-      # def __str__(self):
-      #       return self.name
-      # technician = models.ForeignKey(
-      #       Technician,
-      #       related_name = "technicians",
-      #       on_delete=models.CASCADE,
-      #       null=True,
-      # )
+            AutomobileVO,
+            related_name="appointments",
+            on_delete=models.PROTECT
+      )

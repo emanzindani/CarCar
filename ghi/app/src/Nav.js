@@ -38,6 +38,18 @@ function Nav() {
                 <li><NavLink className="dropdown-item" to="/models">List of Vehicle Models</NavLink></li>
               </ul>
             </div>
+            <div className="nav-item dropdown">
+              <NavLink className="btn btn-light dropdown-toggle bg-success" to="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                Service
+              </NavLink>
+              <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <li><NavLink className="dropdown-item" to="/technicians/new">New Technician</NavLink></li>
+                <li><NavLink className="dropdown-item" to="/technicians">List of Technicians</NavLink></li>
+                <li><NavLink className="dropdown-item" to="/appointments/new">New Appointment</NavLink></li>
+                <li><NavLink className="dropdown-item" to="/appointments">List of Appointments</NavLink></li>
+                <li><NavLink className="dropdown-item" to="/appointments/record">Service history</NavLink></li>
+              </ul>
+            </div>
           </ul>
         </div>
       </div>

@@ -3,48 +3,7 @@ from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
 import json
 from .models import Appointment, AutomobileVO, Technician
-from common.json import ModelEncoder
-# Create your views here.
-
-
-class AutomobileVOEncoder(ModelEncoder):
-    model = AutomobileVO
-    properties = ["vin", "import_href"]
-
-
-class TechnicianEncoder(ModelEncoder):
-    model = Technician
-    properties = [
-        "first_name",
-        "last_name",
-        "employee_id",
-    ]
-
-class AppointmentEncoder(ModelEncoder):
-    model = Appointment
-    properties = [
-        "id",
-        "appointment_date",
-        "appointment_time",
-        "customer_name",
-        "service_reason",
-        "technician",
-    ]
-    encoders = {
-        "autos": AutomobileVOEncoder(),
-        # "technicians": TechnicianEncoder(),
-    }
-    def get_extra_data(self, o):
-        return {
-            "automobile": o.automobile.vin
-        }
-    # def get_extra_data(self, o):
-    #     return {
-    #         "technician": o.technician.employee_id
-    #     }
-
-
-
+from .encoders import TechnicianEncoder, AppointmentEncoder
 
 
 @require_http_methods(["GET", "POST"])
@@ -58,13 +17,13 @@ def api_appointments(request):
         )
     else:
         content = json.loads(request.body)
-        print("content", content)
+
         try:
             href = content["automobile"]
-            print("href", href)
-            #automobile = AutomobileVO.objects.get(id=content["automobile"]) # not sure about this
-            automobile = AutomobileVO.objects.get(import_href=href) # not sure about this
-            content["automobile"] = automobile # not sure about this
+
+
+            automobile = AutomobileVO.objects.get(import_href=href)
+            content["automobile"] = automobile
         except AutomobileVO.DoesNotExist:
             return JsonResponse(
                 {"message": "Invalid auto id"},
@@ -80,7 +39,7 @@ def api_appointments(request):
 
 @require_http_methods(["DELETE"])
 def api_delete_appointment(request, id):
-     if request.method == "DELETE":
+    if request.method == "DELETE":
             count, _ = Appointment.objects.filter(id=id).delete()
             return JsonResponse({"deleted": count > 0})
 
@@ -109,3 +68,9 @@ def api_technicians(request):
             )
             response.status_code = 400
             return response
+
+@require_http_methods(["DELETE"])
+def api_delete_technician(request, id):
+    if request.method == "DELETE":
+            count, _ = Technician.objects.filter(id=id).delete()
+            return JsonResponse({"deleted": count > 0})
