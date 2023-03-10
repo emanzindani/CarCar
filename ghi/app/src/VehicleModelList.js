@@ -17,7 +17,7 @@ function VehicleModelList() {
       getData()
     }, [])
 
- return (
+  return (
 
     <div>
       <h1>Vehicle Models</h1>

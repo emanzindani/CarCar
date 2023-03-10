@@ -32,7 +32,7 @@ function AppointmentList() {
     const data = await resp.json()
 
     setAppointments(appointments.filter(automobile => String(automobile.id) !== e.target.id))
-  
+
 }
 
 
