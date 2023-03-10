@@ -25,7 +25,6 @@ function CustomerForm(props) {
         data.address = address;
         data.phone_number = phoneNumber;
 
-        
         const customerUrl = 'http://localhost:8090/api/customer/';
 
         const fetchConfig = {

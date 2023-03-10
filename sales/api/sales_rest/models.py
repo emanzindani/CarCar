@@ -8,14 +8,17 @@ class AutomobileVO(models.Model):
     year = models.PositiveSmallIntegerField(null=True)
     sold = models.BooleanField(default=False)
 
+
 class Customer(models.Model):
     name = models.CharField(max_length=200)
     address = models.CharField(max_length=200)
     phone_number = models.CharField(max_length=50)
 
+
 class SalesPerson(models.Model):
     name = models.CharField(max_length=200)
     number = models.CharField(max_length=50)
+
 
 class SalesRecord(models.Model):
     sales_person = models.ForeignKey(
@@ -34,6 +37,3 @@ class SalesRecord(models.Model):
         on_delete=models.PROTECT
     )
     price = models.CharField(max_length=100)
-
-    def get_api_url(self):
-        return reverse("api_show_sales", kwargs={"pk": self.pk})

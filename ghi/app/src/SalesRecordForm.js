@@ -31,16 +31,16 @@ class SalesRecordForm extends React.Component {
         const response = await fetch(salesRecordUrl, fetchConfig);
         if (response.ok) {
             const newSalesRecord = await response.json();
-        
 
-            const clear = {
+
+            const empty = {
                 name: '',
                 sales_person: '',
                 customer: '',
                 automobile: '',
                 price: '',
             }
-            this.setState(clear)
+            this.setState(empty)
         }
     }
 
@@ -69,14 +69,13 @@ class SalesRecordForm extends React.Component {
         }
     }
 
-
     render() {
         return (
             <div className="container">
                 <div className="row">
                     <div className="offset-3 col-6">
                         <div className="shadow p-4 mt-4">
-                            <h1>Record a Sale</h1>
+                            <h1>Record a new Sale</h1>
                             <form onSubmit={this.handleSubmit} id="create-customer-form">
                                 <div className="form-floating mb-3">
                                     <select onChange={this.handleChange} value={this.state.automobile} required name="automobile" id="automobile" className="form-select">

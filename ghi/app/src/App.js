@@ -19,7 +19,6 @@ import AppointmentRecord from './AppointmentRecord';
 import TechnicianList from './TechnicianList';
 
 
-
 function App(props) {
   return (
     <BrowserRouter>

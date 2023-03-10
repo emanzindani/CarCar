@@ -11,7 +11,7 @@ function Nav() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <NavLink className="nav-link active" aria-current="page" to="/">Home</NavLink>
+              <NavLink className="btn btn-outline-light" aria-current="page" to="/">Home</NavLink>
             </li>
             <div className="nav-item dropdown">
               <NavLink className="btn btn-light dropdown-toggle bg-success" to="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
@@ -21,7 +21,7 @@ function Nav() {
                 <li><NavLink className="dropdown-item" to="/customer">New customer</NavLink></li>
                 <li><NavLink className="dropdown-item" to="/salesperson/new">New Salesperson</NavLink></li>
                 <li><NavLink className="dropdown-item" to="/salesperson">Salesperson records</NavLink></li>
-                <li><NavLink className="dropdown-item" to="/sales">List of cars sold!</NavLink></li>
+                <li><NavLink className="dropdown-item" to="/sales">List of cars sold</NavLink></li>
                 <li><NavLink className="dropdown-item" to="/sales/new">New Sale</NavLink></li>
               </ul>
             </div>
