@@ -19,8 +19,6 @@ function SalesPersonForm(props) {
         data.name = name;
         data.number = number;
 
-
-
         const salesPersonUrl = 'http://localhost:8090/api/salesperson/';
 
         const fetchConfig = {

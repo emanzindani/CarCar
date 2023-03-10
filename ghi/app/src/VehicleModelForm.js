@@ -1,8 +1,6 @@
 import React, {useEffect, useState} from 'react';
 
 function VehicleModelForm(){
-
-    // populate drop-down
     const [manufacturers, setManufacturers] = useState([]);
     const fetchData = async () => {
         const url = 'http://localhost:8100/api/manufacturers/';
@@ -14,7 +12,6 @@ function VehicleModelForm(){
             setManufacturers(data.manufacturers);
         }
     };
-
 
     const [name, setName] = useState('');
     const handleNameChange = (event) => {
@@ -33,7 +30,6 @@ function VehicleModelForm(){
         const value = event.target.value;
         setManufacturerId(value);
     };
-
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -64,7 +60,6 @@ function VehicleModelForm(){
     useEffect(() => {
         fetchData();
     }, []);
-
 
     return(
         <div className="row">
