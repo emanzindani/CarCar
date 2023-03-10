@@ -1,7 +1,6 @@
 # CarCar
 
 Team:
- Person 1 - Which microservice?
 * Alana Torrez - Service microservice
 * Eman Zindani - Sales microservice/inventory: automobile list, automobile form and vehicle model form
 
