@@ -33,14 +33,14 @@ class SalesRecordForm extends React.Component {
             const newSalesRecord = await response.json();
 
 
-            const clear = {
+            const empty = {
                 name: '',
                 sales_person: '',
                 customer: '',
                 automobile: '',
                 price: '',
             }
-            this.setState(clear)
+            this.setState(empty)
         }
     }
 
@@ -68,7 +68,6 @@ class SalesRecordForm extends React.Component {
             this.setState({customers: customerData.customers})
         }
     }
-
 
     render() {
         return (
